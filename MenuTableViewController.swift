@@ -11,7 +11,10 @@ import UIKit
 class MenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+      
+      let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+      // self.networkController = appDelegate.networkController
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -19,6 +22,15 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    //if we don't have a stored access token, need to ask for one
+    if NetworkController.sharedNetworkController.accessToken == nil {
+      NetworkController.sharedNetworkController.requestAccessToken()
+    } // ask for access token
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

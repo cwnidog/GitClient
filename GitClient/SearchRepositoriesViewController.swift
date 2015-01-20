@@ -15,7 +15,6 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   @IBOutlet weak var searchBarOutlet: UISearchBar!
     
   var repositories = [Repository]() // the array of repositories satisfying the search criteria - may be empty
-  let networkController = NetworkController()
 
   
     override func viewDidLoad() {
@@ -25,6 +24,8 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
       self.tableViewOutlet.dataSource = self
       self.tableViewOutlet.delegate = self
       self.searchBarOutlet.delegate = self
+      
+      let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
       // Do any additional setup after loading the view.
     } // viewDidLoad()
@@ -53,11 +54,9 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   //MARK: UISearchBarDelegate
   
   // when we click on the search bar's search button get the repositories that satisfy the search term
-  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-    println(searchBar.text)
-    
+  func searchBarSearchButtonClicked(searchBar: UISearchBar) {    
     // call fetchRepositoriesForSearchTerm to send a request to the Git server for repositories
-    self.networkController.fetchRepositoriesForSearchTerm(searchBar.text, callback: { (repositories, errorDescription) -> (Void) in
+    NetworkController.sharedNetworkController.fetchRepositoriesForSearchTerm(searchBar.text, callback: { (repositories, errorDescription) -> (Void) in
       if errorDescription == nil {
         self.repositories = repositories!
         self.tableViewOutlet.reloadData()
