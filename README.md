@@ -23,3 +23,8 @@ text. Be sure to only be making authenticated network calls using your oath toke
 view to display the users avatar image and their name.
 * Upon clicking on a cell, implement a custom transition, and transition the image clicked on to a UserDetailViewController page that has their picture, name, and
 whatever other info you want pulled from their API.
+
+# WebKit and Regex
+------------------
+* Implement Regex in your app. Use it to validate the characters the user types into the search bar. Extend String with this functionality.
+* Implement WKWebView in your app. When a user clicks on a repo, show their repo's web page with WKWebView.

@@ -10,6 +10,8 @@
 		2F2ED6E71A7052CE0065BA3D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6E61A7052CE0065BA3D /* UserCell.swift */; };
 		2F2ED6E91A7068330065BA3D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */; };
 		2F2ED6EB1A706C950065BA3D /* ToUserDetailAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */; };
+		2F389B3C1A71A470001BE4C0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F389B3B1A71A470001BE4C0 /* WebViewController.swift */; };
+		2F389B3E1A71A5DB001BE4C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F389B3D1A71A5DB001BE4C0 /* Extensions.swift */; };
 		2F6D62C01A6DA66C00808674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D62BF1A6DA66C00808674 /* AppDelegate.swift */; };
 		2F6D62C51A6DA66C00808674 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D62C31A6DA66C00808674 /* Main.storyboard */; };
 		2F6D62C71A6DA66C00808674 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D62C61A6DA66C00808674 /* Images.xcassets */; };
@@ -38,6 +40,8 @@
 		2F2ED6E61A7052CE0065BA3D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToUserDetailAnimationController.swift; sourceTree = "<group>"; };
+		2F389B3B1A71A470001BE4C0 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		2F389B3D1A71A5DB001BE4C0 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2F6D62BA1A6DA66C00808674 /* GitClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6D62BE1A6DA66C00808674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F6D62BF1A6DA66C00808674 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				2F6D62DF1A6DA6F300808674 /* Repository.swift */,
 				2FB060291A704A0500AF7DD0 /* User.swift */,
 				2F2ED6E61A7052CE0065BA3D /* UserCell.swift */,
+				2F389B3D1A71A5DB001BE4C0 /* Extensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				2FB0602B1A704B7A00AF7DD0 /* SearchUsersViewController.swift */,
 				2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */,
 				2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */,
+				2F389B3B1A71A470001BE4C0 /* WebViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -265,11 +271,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F2ED6E71A7052CE0065BA3D /* UserCell.swift in Sources */,
+				2F389B3C1A71A470001BE4C0 /* WebViewController.swift in Sources */,
 				2F6D62E71A6DA9A900808674 /* MenuTableViewController.swift in Sources */,
 				2F2ED6E91A7068330065BA3D /* UserDetailViewController.swift in Sources */,
 				2F6D62C01A6DA66C00808674 /* AppDelegate.swift in Sources */,
 				2FB0602A1A704A0500AF7DD0 /* User.swift in Sources */,
 				2F6D62E01A6DA6F300808674 /* Repository.swift in Sources */,
+				2F389B3E1A71A5DB001BE4C0 /* Extensions.swift in Sources */,
 				2FB0602C1A704B7A00AF7DD0 /* SearchUsersViewController.swift in Sources */,
 				2F6D62EB1A6DB2F300808674 /* SearchRepositoriesViewController.swift in Sources */,
 				2F6D62E91A6DAD3200808674 /* NetworkViewController.swift in Sources */,
