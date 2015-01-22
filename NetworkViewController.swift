@@ -23,6 +23,8 @@ class NetworkController {
   let accessTokenUserDefaultsKey = "accessToken"
   var accessToken : String?
   
+  let imageQueue = NSOperationQueue() // don't handle getting images in the main thread
+  
   var urlSession : NSURLSession
   
   init () {
@@ -35,12 +37,13 @@ class NetworkController {
     }
   } // init()
   
-  // request an access token from the Github API
+  // request an access token from the Github API for OAuth
   func requestAccessToken() {
     let url = "https://github.com/login/oauth/authorize?client_id=\(self.clientID)&scope=user,repo"
-    UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+    UIApplication.sharedApplication().openURL(NSURL(string: url)!) // open the app's local URL in a browser
   } // requestAccessToken()
   
+  // handle the request for the OAuth access token and the response
   func handleCallbackURL(url: NSURL) {
     let code = url.query
     
@@ -83,7 +86,6 @@ class NetworkController {
             
           case 500 ... 599:
             println("Got response saying error at server end with status code: \(httpResponse.statusCode)")
-
 
           default:
             println("Hit default case with status code: \(httpResponse.statusCode)")
@@ -143,6 +145,66 @@ class NetworkController {
     
     dataTask.resume() // fire it up
   } // fetchRepositoriesForSearchTerm()
+  
+  func fetchUsersForSearchTerm(searchTerm : String, callback : ([User]?, String?) -> (Void)) {
+    
+    // set up the request
+    let url = NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")
+    let request = NSMutableURLRequest(URL: url!)
+    request.setValue("token \(self.accessToken!)", forHTTPHeaderField: "Authorization")
+    
+    let dataTask = self.urlSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+      
+      if error == nil {
+        if let httpResponse = response as? NSHTTPURLResponse {
+          switch httpResponse.statusCode {
+          case 200 ... 299 :
+            if let jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? [String:AnyObject] {
+              if let itemsArray = jsonDictionary["items"] as? [[String:AnyObject]] {
+                // build the array of users
+                var users = [User]() // an array of user information
+                for item in itemsArray {
+                  let user = User(jsonDictionary: item)
+                  users.append(user)
+                } // for item
+                
+                // go back to the main thread and execute the callback
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                  callback(users, nil)
+                })
+              } // if let items_array
+            } // if let jsonDictionary
+            
+          case 400 ... 499:
+            println("Got response saying error at our end with status code: \(httpResponse.statusCode)")
+            
+          case 500 ... 599:
+            println("Got response saying error at server end with status code: \(httpResponse.statusCode)")
+            
+          default :
+            println("Hit default case with status code: \(httpResponse.statusCode)")
+            
+          } // switch
+        } // if let httpResponse
+      } // error = nil
+      
+      else {
+        println(error.localizedDescription)
+      }
+    }) // callback enclosure
+    dataTask.resume()
+  } // fetchUsersForSearchTerm
+  
+  func fetchAvatarImageForURL(url : String, completionHandler : (UIImage) -> (Void)) {
+    
+    let url = NSURL(string : url)
+    self.imageQueue.addOperationWithBlock { () -> Void in
+      let imageData = NSData(contentsOfURL: url!)
+      let image = UIImage(data: imageData!)
+      completionHandler(image!)
+    } // completionHandler
+    
+  } // fetchAvatarImageForURL()
 
   
 } // Network Controller

@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
+  // ask the Neywork Controller to handle the URL
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
     println(url)
     NetworkController.sharedNetworkController.handleCallbackURL(url)

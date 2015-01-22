@@ -16,3 +16,10 @@ text. Be sure to only be making authenticated network calls using your oath toke
 * Display the repo’s they searched for a in the table view
 * Implement user defaults to store the authorization token, so it only does the OAuth process once.
 * Convert your network controller to a singleton
+
+#userPhoto
+----------
+* Create a UserSearchViewController that searches for users, similar to how we are already searching for repositories. Instead of a table view, use a collection
+view to display the users avatar image and their name.
+* Upon clicking on a cell, implement a custom transition, and transition the image clicked on to a UserDetailViewController page that has their picture, name, and
+whatever other info you want pulled from their API.

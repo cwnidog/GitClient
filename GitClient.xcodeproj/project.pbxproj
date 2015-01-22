@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F2ED6E71A7052CE0065BA3D /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6E61A7052CE0065BA3D /* UserCell.swift */; };
+		2F2ED6E91A7068330065BA3D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */; };
+		2F2ED6EB1A706C950065BA3D /* ToUserDetailAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */; };
 		2F6D62C01A6DA66C00808674 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D62BF1A6DA66C00808674 /* AppDelegate.swift */; };
 		2F6D62C51A6DA66C00808674 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D62C31A6DA66C00808674 /* Main.storyboard */; };
 		2F6D62C71A6DA66C00808674 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F6D62C61A6DA66C00808674 /* Images.xcassets */; };
@@ -16,6 +19,8 @@
 		2F6D62E71A6DA9A900808674 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D62E61A6DA9A900808674 /* MenuTableViewController.swift */; };
 		2F6D62E91A6DAD3200808674 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D62E81A6DAD3200808674 /* NetworkViewController.swift */; };
 		2F6D62EB1A6DB2F300808674 /* SearchRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6D62EA1A6DB2F300808674 /* SearchRepositoriesViewController.swift */; };
+		2FB0602A1A704A0500AF7DD0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB060291A704A0500AF7DD0 /* User.swift */; };
+		2FB0602C1A704B7A00AF7DD0 /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0602B1A704B7A00AF7DD0 /* SearchUsersViewController.swift */; };
 		2FCEAB0B1A6EB5470016D98E /* server.js in Resources */ = {isa = PBXBuildFile; fileRef = 2FCEAB0A1A6EB5470016D98E /* server.js */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F2ED6E61A7052CE0065BA3D /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToUserDetailAnimationController.swift; sourceTree = "<group>"; };
 		2F6D62BA1A6DA66C00808674 /* GitClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6D62BE1A6DA66C00808674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F6D62BF1A6DA66C00808674 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,8 @@
 		2F6D62E61A6DA9A900808674 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = ../MenuTableViewController.swift; sourceTree = "<group>"; };
 		2F6D62E81A6DAD3200808674 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkViewController.swift; path = ../NetworkViewController.swift; sourceTree = "<group>"; };
 		2F6D62EA1A6DB2F300808674 /* SearchRepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewController.swift; sourceTree = "<group>"; };
+		2FB060291A704A0500AF7DD0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2FB0602B1A704B7A00AF7DD0 /* SearchUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
 		2FCEAB0A1A6EB5470016D98E /* server.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = server.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				2F6D62DF1A6DA6F300808674 /* Repository.swift */,
+				2FB060291A704A0500AF7DD0 /* User.swift */,
+				2F2ED6E61A7052CE0065BA3D /* UserCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -144,6 +156,9 @@
 				2F6D62EA1A6DB2F300808674 /* SearchRepositoriesViewController.swift */,
 				2F6D62E81A6DAD3200808674 /* NetworkViewController.swift */,
 				2F6D62E61A6DA9A900808674 /* MenuTableViewController.swift */,
+				2FB0602B1A704B7A00AF7DD0 /* SearchUsersViewController.swift */,
+				2F2ED6E81A7068330065BA3D /* UserDetailViewController.swift */,
+				2F2ED6EA1A706C950065BA3D /* ToUserDetailAnimationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -249,11 +264,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F2ED6E71A7052CE0065BA3D /* UserCell.swift in Sources */,
 				2F6D62E71A6DA9A900808674 /* MenuTableViewController.swift in Sources */,
+				2F2ED6E91A7068330065BA3D /* UserDetailViewController.swift in Sources */,
 				2F6D62C01A6DA66C00808674 /* AppDelegate.swift in Sources */,
+				2FB0602A1A704A0500AF7DD0 /* User.swift in Sources */,
 				2F6D62E01A6DA6F300808674 /* Repository.swift in Sources */,
+				2FB0602C1A704B7A00AF7DD0 /* SearchUsersViewController.swift in Sources */,
 				2F6D62EB1A6DB2F300808674 /* SearchRepositoriesViewController.swift in Sources */,
 				2F6D62E91A6DAD3200808674 /* NetworkViewController.swift in Sources */,
+				2F2ED6EB1A706C950065BA3D /* ToUserDetailAnimationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
