@@ -184,13 +184,12 @@ class NetworkController {
             
           default :
             println("Hit default case with status code: \(httpResponse.statusCode)")
-            
           } // switch
         } // if let httpResponse
       } // error = nil
       
       else {
-        println(error.localizedDescription)
+        println(error.localizedDescription) // what was the error?
       }
     }) // callback enclosure
     dataTask.resume()
@@ -200,7 +199,7 @@ class NetworkController {
     
     let url = NSURL(string : url)
     self.imageQueue.addOperationWithBlock { () -> Void in
-      let imageData = NSData(contentsOfURL: url!)
+      let imageData = NSData(contentsOfURL: url!) // the Github images aren't protected
       let image = UIImage(data: imageData!)
       completionHandler(image!)
     } // completionHandler

@@ -25,8 +25,8 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
         // Do any additional setup after loading the view.
     } // viewDidLoad()
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
     self.navigationController?.delegate = nil // fix the zombie UINavigationController problem
   } // viewWillAppear()
   
@@ -72,7 +72,7 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
   
   func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     
-    if fromVC is SearchUsersViewController {
+    if toVC is UserDetailViewController {
       // return the animation controller
       return ToUserDetailAnimationController()
     } // moving from the SearchUsers VC
