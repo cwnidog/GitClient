@@ -25,10 +25,11 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
         // Do any additional setup after loading the view.
     } // viewDidLoad()
   
-  override func viewWillDisappear(animated: Bool) {
+/*  override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     self.navigationController?.delegate = nil // fix the zombie UINavigationController problem
   } // viewWillAppear()
+*/
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.users.count
@@ -87,5 +88,10 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
       destinationVC.selectedUser = self.users[selectedIndexPath.row]
     } // if segue.identifier
   } // prepareForSegue()
+  
+  // check the Search Term user input, expect alphanumeric, dash, or newline only
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    return text.validate()
+  }
 
 } // SearchUsersViewController

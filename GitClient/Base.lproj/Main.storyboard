@@ -225,6 +225,24 @@
             </objects>
             <point key="canvasLocation" x="1977" y="1267"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="Gbc-Q8-YB3">
+            <objects>
+                <viewController storyboardIdentifier="Web View Controller" title="Web View Controller" id="2Jr-X1-z1g" customClass="WebViewController" customModule="GitClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mwQ-dM-5wQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QEs-F9-lZJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GAV-Hn-UlM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8aK-yc-omK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2781" y="475"/>
+        </scene>
         <!--Search Repositories View Controller-->
         <scene sceneID="9kl-09-HyD">
             <objects>
@@ -252,6 +270,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kHn-8F-xlh" id="yyo-kW-C8S">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2Jr-X1-z1g" kind="show" identifier="SHOW_WEB" id="bCN-0a-MD0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

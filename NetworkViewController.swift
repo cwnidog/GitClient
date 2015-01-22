@@ -100,7 +100,6 @@ class NetworkController {
   
   func fetchRepositoriesForSearchTerm(searchTerm: String, callback : ([Repository]?, String?) ->(Void)) {
     
-    //let url = NSURL(string: "http://127.0.0.1:3000") - uses node simulator to get canned response
     let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)")
     
     let request = NSMutableURLRequest(URL: url!)

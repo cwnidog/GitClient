@@ -43,7 +43,7 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("REPO_CELL", forIndexPath: indexPath) as UITableViewCell
-    cell.textLabel?.text = self.repositories[indexPath.row].name // all we do for now is print the name of the repository
+    cell.textLabel?.text = self.repositories[indexPath.row].name
     return cell
   }
   
@@ -64,15 +64,16 @@ class SearchRepositoriesViewController: UIViewController, UITableViewDataSource,
     })
     searchBar.resignFirstResponder()
   }
-
-    /*
-    // MARK: - Navigation
+    // MARK: - Navigationurl
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+      if segue.identifier == "SHOW_WEB" {
+        let destinationVC = segue.destinationViewController as WebViewController
+        let selectedIndexPath = self.tableViewOutlet.indexPathForSelectedRow()
+        let repo = self.repositories[selectedIndexPath!.row]
+        destinationVC.url = repo.url
+      } // if segue.identifier
+    } /// prepareForSegue()
 
 } // SearchRepositoriesViewController
