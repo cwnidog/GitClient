@@ -14,6 +14,7 @@ class ToUserDetailAnimationController : NSObject, UIViewControllerAnimatedTransi
     return 0.4 // 0.4 sec
   } // transitionDuration()
   
+  // custom transition
   func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
     
     // get references to both of the view controllers
@@ -22,7 +23,7 @@ class ToUserDetailAnimationController : NSObject, UIViewControllerAnimatedTransi
     
     let containerView = transitionContext.containerView()
     
-    // find the selected cell and make a snapshot of the imageView that is going to move
+    // find the selected cell and make a snapshot of it
     let selectedIndexPath = fromVC.collectionView.indexPathsForSelectedItems().first as NSIndexPath
     let cell = fromVC.collectionView.cellForItemAtIndexPath(selectedIndexPath) as UserCell
     let snapshotOfCell = cell.imageView.snapshotViewAfterScreenUpdates(false)
@@ -30,9 +31,9 @@ class ToUserDetailAnimationController : NSObject, UIViewControllerAnimatedTransi
     snapshotOfCell.frame = containerView.convertRect(cell.imageView.frame, fromView: cell.imageView.superview)
     
     // mave toVC start on screen with alpha set to 0 (transparent)
-    toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
+    toVC.view.frame = transitionContext.finalFrameForViewController(toVC) // translate from collection view coordinates  to container view corrdinates
     toVC.view.alpha = 0 // transparent
-    toVC.imageView.hidden = true // don't see it as it moves
+    toVC.imageView.hidden = true // don't see the cell as it moves
     
     containerView.addSubview(toVC.view)
     containerView.addSubview(snapshotOfCell)
@@ -46,6 +47,7 @@ class ToUserDetailAnimationController : NSObject, UIViewControllerAnimatedTransi
     UIView.animateWithDuration(duration, animations: { () -> Void in
       toVC.view.alpha = 1.0 // move to fully visible
       
+      // move the sanpshot
       let frame = containerView.convertRect(toVC.imageView.frame, fromView: toVC.view)
       snapshotOfCell.frame = frame
       }) { (finished) -> Void in
