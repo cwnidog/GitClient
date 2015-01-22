@@ -46,6 +46,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gZ8-sA-ekm" kind="show" identifier="SHOW_USER_DETAIL" id="82R-L5-Pgj"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="7Z8-Rl-4hQ" style="IBUITableViewCellStyleDefault" id="yht-Cq-HTq">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -105,7 +108,122 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RX2-1w-0dk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="475"/>
+            <point key="canvasLocation" x="1275" y="475"/>
+        </scene>
+        <!--Search Users View Controller-->
+        <scene sceneID="d0g-3R-ug7">
+            <objects>
+                <viewController title="Search Users View Controller" id="gZ8-sA-ekm" customClass="SearchUsersViewController" customModule="GitClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ShP-ip-u4Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Cl-iE-aMZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SfO-ZR-r1b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tPh-RE-FBA">
+                                <rect key="frame" x="8" y="64" width="584" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JcT-DK-TJp">
+                                <rect key="frame" x="8" y="108" width="584" height="492"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ndP-KK-fmi">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_CELL" id="M25-Wg-rht" customClass="UserCell" customModule="GitClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mhb-sn-jIb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="mhb-sn-jIb" firstAttribute="leading" secondItem="M25-Wg-rht" secondAttribute="leading" id="I2c-ou-YK9"/>
+                                            <constraint firstItem="mhb-sn-jIb" firstAttribute="top" secondItem="M25-Wg-rht" secondAttribute="top" id="QVJ-o6-Ebd"/>
+                                            <constraint firstAttribute="bottom" secondItem="mhb-sn-jIb" secondAttribute="bottom" id="R6c-rP-41e"/>
+                                            <constraint firstAttribute="trailing" secondItem="mhb-sn-jIb" secondAttribute="trailing" id="icS-fT-sRh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="mhb-sn-jIb" id="gAp-w4-n8n"/>
+                                            <segue destination="kZe-XK-4r0" kind="show" identifier="SHOW_USER_DETAIL" id="eYI-R8-kf9"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JcT-DK-TJp" firstAttribute="top" secondItem="tPh-RE-FBA" secondAttribute="bottom" id="D2L-56-A9w"/>
+                            <constraint firstItem="0Cl-iE-aMZ" firstAttribute="top" secondItem="JcT-DK-TJp" secondAttribute="bottom" id="F7c-wa-iCF"/>
+                            <constraint firstItem="JcT-DK-TJp" firstAttribute="leading" secondItem="SfO-ZR-r1b" secondAttribute="leadingMargin" constant="-8" id="FjQ-NT-mSd"/>
+                            <constraint firstItem="tPh-RE-FBA" firstAttribute="top" secondItem="ShP-ip-u4Q" secondAttribute="bottom" id="GIi-Pm-7ca"/>
+                            <constraint firstItem="tPh-RE-FBA" firstAttribute="leading" secondItem="SfO-ZR-r1b" secondAttribute="leadingMargin" constant="-8" id="Zp0-4g-tK5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JcT-DK-TJp" secondAttribute="trailing" constant="-8" id="hIy-2j-JxY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tPh-RE-FBA" secondAttribute="trailing" constant="-8" id="onf-sH-Tlj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="JcT-DK-TJp" id="6oY-B5-KCF"/>
+                        <outlet property="searchBar" destination="tPh-RE-FBA" id="Pxf-34-kMz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VDf-xl-9tc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1275" y="1263"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="cLW-m7-TWY">
+            <objects>
+                <viewController title="User Detail View Controller" id="kZe-XK-4r0" customClass="UserDetailViewController" customModule="GitClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zzv-Y9-6fo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yw6-1k-KNz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t01-N8-Vs8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R1V-xf-PIp">
+                                <rect key="frame" x="225" y="72" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3R6-nW-j67"/>
+                                    <constraint firstAttribute="height" constant="150" id="GZg-3m-Zut"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jv5-tF-HMb">
+                                <rect key="frame" x="277" y="242" width="46" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="R1V-xf-PIp" secondAttribute="centerX" id="0VZ-Sw-JRs"/>
+                            <constraint firstItem="jv5-tF-HMb" firstAttribute="top" secondItem="R1V-xf-PIp" secondAttribute="bottom" constant="20" id="9dH-TS-AHW"/>
+                            <constraint firstItem="R1V-xf-PIp" firstAttribute="top" secondItem="Zzv-Y9-6fo" secondAttribute="bottom" constant="8" id="DBf-ub-Nk2"/>
+                            <constraint firstItem="jv5-tF-HMb" firstAttribute="centerX" secondItem="R1V-xf-PIp" secondAttribute="centerX" id="NBQ-mQ-BPl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="R1V-xf-PIp" id="oCM-gA-dHA"/>
+                        <outlet property="nameLabel" destination="jv5-tF-HMb" id="BXZ-Yv-Gky"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pr-qn-n8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977" y="1267"/>
         </scene>
         <!--Search Repositories View Controller-->
         <scene sceneID="9kl-09-HyD">
