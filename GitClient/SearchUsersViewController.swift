@@ -28,9 +28,7 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.navigationController?.delegate = nil // fix the zombie UINavigationController problem
-
-    
-  }
+  } // viewWillAppear()
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.users.count

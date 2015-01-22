@@ -77,7 +77,8 @@ class NetworkController {
             let accessTokeComponent = tokenResponse?.componentsSeparatedByString("&").first as String
             let accessToken = accessTokeComponent.componentsSeparatedByString("=").last
             println (accessToken) // let's see what we got
-            // store the token away for reuse
+            // set the token and store it away for reuse
+            self.accessToken = accessToken
             NSUserDefaults.standardUserDefaults().setValue(accessToken!, forKey: self.accessTokenUserDefaultsKey)
             NSUserDefaults.standardUserDefaults().synchronize()
             
