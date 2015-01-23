@@ -28,3 +28,7 @@ whatever other info you want pulled from their API.
 ------------------
 * Implement Regex in your app. Use it to validate the characters the user types into the search bar. Extend String with this functionality.
 * Implement WKWebView in your app. When a user clicks on a repo, show their repo's web page with WKWebView.
+
+#centerWeb
+----------
+* Add code (from Stack Overflow) to center the Web view on its container view and make its top, bottom, and side margins flexible, so it will change size with varying screen sizes.
