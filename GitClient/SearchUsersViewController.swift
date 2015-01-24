@@ -18,6 +18,8 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      // the usual dataSource and Delegate setup
       self.collectionView.dataSource = self
       self.searchBar.delegate = self
       self.navigationController?.delegate = self
@@ -25,30 +27,27 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
         // Do any additional setup after loading the view.
     } // viewDidLoad()
   
-/*  override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
-    self.navigationController?.delegate = nil // fix the zombie UINavigationController problem
-  } // viewWillAppear()
-*/
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.users.count
+    return self.users.count // how many items in the collection?
   } // collectionView(numberOfItemsInSection)
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("USER_CELL", forIndexPath: indexPath) as UserCell
     cell.imageView.image = nil // empty the image, so don't show old one
     
-    // get the user we're interested in
+    // get the user we're interested in and set the collectionView cell's image
     var user = self.users[indexPath.row]
+
+    // if don't already have an image for this user, need to Github for one
     if user.avatarImage == nil {
-      // need to ask for an image
       NetworkController.sharedNetworkController.fetchAvatarImageForURL(user.avatarURL, completionHandler: { (image) -> (Void) in
         cell.imageView.image = image
         user.avatarImage = image
         self.users[indexPath.row] = user
       }) // completionHandler
     } // if avatar image is nil
+      
     else {
       // have a stored image, use it
       cell.imageView.image = user.avatarImage
@@ -63,10 +62,11 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     
+    // go to Github and ask for users whose name fits the seach term that was typed into the serach bar, expect an array of 0 or more matches
     NetworkController.sharedNetworkController.fetchUsersForSearchTerm(searchBar.text, callback: { (users, errorDescription) -> (Void) in
       if errorDescription == nil {
         self.users = users!
-        self.collectionView.reloadData()
+        self.collectionView.reloadData() // display the users' images on the view
       }
     }) // callback enclosure
   } // searchBarSearchButtonClicked
@@ -80,10 +80,11 @@ class SearchUsersViewController: UIViewController, UICollectionViewDataSource, U
     return nil
   } // navigationController
   
+  // get ready to move to the User Detail view
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "SHOW_USER_DETAIL" {
       let destinationVC = segue.destinationViewController as UserDetailViewController
-      let selectedIndexPath = self.collectionView.indexPathsForSelectedItems().first as NSIndexPath
+      let selectedIndexPath = self.collectionView.indexPathsForSelectedItems().first as NSIndexPath // the indexPath for the selected user
       
       destinationVC.selectedUser = self.users[selectedIndexPath.row]
     } // if segue.identifier

@@ -17,6 +17,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       
+      // set the displayed image and name for this user
       self.imageView.image = selectedUser.avatarImage
       self.nameLabel.text = selectedUser.name
 

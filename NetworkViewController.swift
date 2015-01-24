@@ -51,6 +51,7 @@ class NetworkController {
     
     // form the string
     let bodyString = "\(code!)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)"
+    
     // encode it as ASCII
     let bodyData = bodyString.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
     let length = bodyData!.length
@@ -73,11 +74,12 @@ class NetworkController {
             let tokenResponse = NSString(data: data, encoding: NSASCIIStringEncoding)
             println(tokenResponse) // let's see what we got
             
-            // parse the response string using delimeters
-            let accessTokeComponent = tokenResponse?.componentsSeparatedByString("&").first as String
-            let accessToken = accessTokeComponent.componentsSeparatedByString("=").last
+            // parse the response string using delimeters, want the second part, which contains the access token string itself
+            let accessTokenComponent = tokenResponse?.componentsSeparatedByString("&").first as String
+            let accessToken = accessTokenComponent.componentsSeparatedByString("=").last
             println (accessToken) // let's see what we got
-            // set the token and store it away for reuse
+            
+            // set the token property for this time and store it away for reuse later
             self.accessToken = accessToken
             NSUserDefaults.standardUserDefaults().setValue(accessToken!, forKey: self.accessTokenUserDefaultsKey)
             NSUserDefaults.standardUserDefaults().synchronize()
@@ -88,7 +90,7 @@ class NetworkController {
           case 500 ... 599:
             println("Got response saying error at server end with status code: \(httpResponse.statusCode)")
 
-          default:
+          default: // unrecognized status code
             println("Hit default case with status code: \(httpResponse.statusCode)")
           } // switch on statusCode
         } // if let httpResponse
@@ -98,6 +100,7 @@ class NetworkController {
     dataTask.resume() // fire the request off
   } // andleCallbackURL()
   
+  // get the repositories matching the search term from Github, if any
   func fetchRepositoriesForSearchTerm(searchTerm: String, callback : ([Repository]?, String?) ->(Void)) {
     
     let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)")
@@ -136,7 +139,7 @@ class NetworkController {
           case 500 ... 599:
             println("Got response saying error at server end.")
             
-          default:
+          default: // unrecognized status code
             println("Hit the default case, didn't recognize response status code.")
           } // switch statusCode
         } // if let httpReponse
@@ -146,6 +149,8 @@ class NetworkController {
     dataTask.resume() // fire it up
   } // fetchRepositoriesForSearchTerm()
   
+  
+  // get the users matching the search term from Github, if any
   func fetchUsersForSearchTerm(searchTerm : String, callback : ([User]?, String?) -> (Void)) {
     
     // set up the request
@@ -181,7 +186,7 @@ class NetworkController {
           case 500 ... 599:
             println("Got response saying error at server end with status code: \(httpResponse.statusCode)")
             
-          default :
+          default : // unrecognized status code
             println("Hit default case with status code: \(httpResponse.statusCode)")
           } // switch
         } // if let httpResponse
@@ -194,6 +199,7 @@ class NetworkController {
     dataTask.resume()
   } // fetchUsersForSearchTerm
   
+  // get the user's avatar image from Github, don't need authorization for this
   func fetchAvatarImageForURL(url : String, completionHandler : (UIImage) -> (Void)) {
     
     let url = NSURL(string : url)
